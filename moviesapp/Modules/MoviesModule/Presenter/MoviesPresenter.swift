@@ -11,7 +11,7 @@ protocol MoviesPresenterProtocol : AnyObject {
     func getMovies() -> [MovieModel]
     func getMovie(at index: Int) -> MovieModel?
     func fetchMovies()
-//    func showHeroDetail(at index: Int)
+    func showMovieDetail(at index: Int)
 }
 
 class MoviesPresenter {
@@ -62,6 +62,12 @@ extension MoviesPresenter: MoviesPresenterProtocol {
             
             welf.view?.refreshCollectionView()
         })
+    }
+    
+    func showMovieDetail(at index: Int) {
+        if let movie = getMovie(at: index) {
+            router.showMovieDetail(movie)
+        }
     }
     
 }

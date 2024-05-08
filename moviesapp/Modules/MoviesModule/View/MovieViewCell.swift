@@ -30,7 +30,7 @@ class MovieViewCell: UICollectionViewCell {
     func setMovie(_ movie: MovieModel) {
         // Asignacion de labels
         lbTitle.text = movie.title
-        lbVotes.text = String(movie.votes)
+        lbVotes.text = String(format: "%.1f", movie.votes)
         // Cargar de imagen desde url
         if let url = URL(string: Endpoint.baseMovieDbPoster + movie.poster){
             ivPoster.af.setImage(withURL: url)

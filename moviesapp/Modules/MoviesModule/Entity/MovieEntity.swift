@@ -14,6 +14,7 @@ struct MovieEntity: Codable {
     let releaseDate: String
     let overview: String
     let poster: String
+    let backdrop: String
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,6 +23,7 @@ struct MovieEntity: Codable {
         case releaseDate = "release_date"
         case overview
         case poster = "poster_path"
+        case backdrop = "backdrop_path"
     }
 }
 
@@ -34,7 +36,8 @@ extension MovieEntity {
             votes: voteAverage,
             releaseDate: releaseDate,
             overview: overview,
-            poster: poster
+            poster: poster,
+            backdrop: backdrop
         )
     }
 }

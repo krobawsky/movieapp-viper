@@ -29,6 +29,9 @@
 		A06F52F42BE9D124007C7799 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F52F32BE9D124007C7799 /* MovieModel.swift */; };
 		A06F52FB2BEA696F007C7799 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F52F92BEA696F007C7799 /* MovieViewCell.swift */; };
 		A06F52FC2BEA696F007C7799 /* MovieViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A06F52FA2BEA696F007C7799 /* MovieViewCell.xib */; };
+		A06F53022BEB3BDD007C7799 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53012BEB3BDD007C7799 /* MovieDetailRouter.swift */; };
+		A06F53042BEB3BE7007C7799 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */; };
+		A06F53062BEB3BEF007C7799 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		A06F52F32BE9D124007C7799 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		A06F52F92BEA696F007C7799 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
 		A06F52FA2BEA696F007C7799 /* MovieViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewCell.xib; sourceTree = "<group>"; };
+		A06F53012BEB3BDD007C7799 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
+		A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieDetailPresenter.swift; path = ../../../../../../MovieDetailPresenter.swift; sourceTree = "<group>"; };
+		A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		ABB79ACEE42EF149C59DCAEB /* Pods-moviesapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviesapp.release.xcconfig"; path = "Target Support Files/Pods-moviesapp/Pods-moviesapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +125,7 @@
 		A06F52CA2BE9BDA5007C7799 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A06F52FD2BEB3B9D007C7799 /* MovieDetailModule */,
 				A06F52DA2BE9C5AA007C7799 /* MoviesModule */,
 				A06F52CB2BE9BDAB007C7799 /* LoginModule */,
 			);
@@ -237,6 +244,40 @@
 				A06F52EE2BE9CBCF007C7799 /* BaseServerManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A06F52FD2BEB3B9D007C7799 /* MovieDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				A06F53002BEB3BB7007C7799 /* Router */,
+				A06F52FF2BEB3BB2007C7799 /* Presenter */,
+				A06F52FE2BEB3BAC007C7799 /* View */,
+			);
+			path = MovieDetailModule;
+			sourceTree = "<group>";
+		};
+		A06F52FE2BEB3BAC007C7799 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A06F52FF2BEB3BB2007C7799 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A06F53002BEB3BB7007C7799 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				A06F53012BEB3BDD007C7799 /* MovieDetailRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		C8E23570690411CB83A5C8B2 /* Pods */ = {
@@ -364,11 +405,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A06F53022BEB3BDD007C7799 /* MovieDetailRouter.swift in Sources */,
 				A06F52D92BE9C320007C7799 /* LoginViewController.swift in Sources */,
 				A06F52F12BE9CC02007C7799 /* EndPoints.swift in Sources */,
 				A06F52D12BE9BE3E007C7799 /* LoginPresenter.swift in Sources */,
 				A06F52E22BE9C6B3007C7799 /* MoviesPresenter.swift in Sources */,
 				A06F52EF2BE9CBCF007C7799 /* BaseServerManager.swift in Sources */,
+				A06F53042BEB3BE7007C7799 /* MovieDetailPresenter.swift in Sources */,
 				A06F52E52BE9C6C3007C7799 /* MoviesInteractor.swift in Sources */,
 				A06F52BB2BE9BB9A007C7799 /* ViewController.swift in Sources */,
 				A06F52E72BE9C6CB007C7799 /* MoviesRouter.swift in Sources */,
@@ -378,6 +421,7 @@
 				A06F52B72BE9BB9A007C7799 /* AppDelegate.swift in Sources */,
 				A06F52D52BE9C18F007C7799 /* LoginModule.swift in Sources */,
 				A06F52F42BE9D124007C7799 /* MovieModel.swift in Sources */,
+				A06F53062BEB3BEF007C7799 /* MovieDetailViewController.swift in Sources */,
 				A06F52EA2BE9CA06007C7799 /* MovieEntity.swift in Sources */,
 				A06F52B92BE9BB9A007C7799 /* SceneDelegate.swift in Sources */,
 				A06F52E02BE9C6A7007C7799 /* MoviesViewController.swift in Sources */,

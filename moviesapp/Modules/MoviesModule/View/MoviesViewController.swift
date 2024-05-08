@@ -57,6 +57,7 @@ extension MoviesViewController: UICollectionViewDataSource {
 extension MoviesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.showMovieDetail(at: indexPath.row)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,9 +79,6 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 extension MoviesViewController : MoviesViewControllerProtocol {
     
     func refreshCollectionView(){
-        print("Data: ")
-        let mov = presenter?.getMovies()
-        print(mov?.count ?? 0)
         cvMovies.reloadData()
     }
 }

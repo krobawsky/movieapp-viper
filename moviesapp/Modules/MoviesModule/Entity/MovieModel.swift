@@ -14,4 +14,5 @@ struct MovieModel {
     let releaseDate: String
     let overview: String
     let poster: String
+    let backdrop: String
 }

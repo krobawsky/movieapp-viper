@@ -95,10 +95,99 @@
             </objects>
             <point key="canvasLocation" x="955" y="11"/>
         </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="LlN-QU-awL">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailViewController" id="geT-ct-lSI" customClass="MovieDetailViewController" customModule="moviesapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TWc-tL-6rK">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1N0-cp-ypx">
+                                <rect key="frame" x="0.0" y="59" width="393" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="HJc-Dk-43s"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vaguito" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N95-nY-U0L">
+                                <rect key="frame" x="16" y="275" width="361" height="21.666666666666686"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-9A-bm9">
+                                <rect key="frame" x="16" y="304.66666666666669" width="34" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q8h-yc-eRg">
+                                <rect key="frame" x="16" y="337.66666666666669" width="361" height="16"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="J8t-Tq-ffv">
+                                        <rect key="frame" x="0.0" y="-0.33333333333333215" width="20" height="15.666666666666664"/>
+                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="6ih-vj-Ub8"/>
+                                            <constraint firstAttribute="width" constant="20" id="H20-hy-DlP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fau-cE-KCY" userLabel="lbVotes">
+                                        <rect key="frame" x="30" y="0.0" width="331" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TD-Ax-0aM">
+                                <rect key="frame" x="16" y="369.66666666666669" width="361" height="133.66666666666669"/>
+                                <string key="text">Garfield, the world-famous, Monday-hating, lasagna-loving indoor cat, is about to have a wild outdoor adventure! After an unexpected reunion with his long-lost father – scruffy street cat Vic – Garfield and his canine friend Odie are forced from their perfectly pampered life into joining Vic in a hilarious, high-stakes heist.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Ie-QH-xzH"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="N95-nY-U0L" firstAttribute="leading" secondItem="3Ie-QH-xzH" secondAttribute="leading" constant="16" id="0Jb-iB-AzL"/>
+                            <constraint firstItem="4TD-Ax-0aM" firstAttribute="top" secondItem="Q8h-yc-eRg" secondAttribute="bottom" constant="16" id="9GR-ZO-1cP"/>
+                            <constraint firstItem="4TD-Ax-0aM" firstAttribute="leading" secondItem="3Ie-QH-xzH" secondAttribute="leading" constant="16" id="9iF-Ea-jxh"/>
+                            <constraint firstItem="1N0-cp-ypx" firstAttribute="centerX" secondItem="TWc-tL-6rK" secondAttribute="centerX" id="EYe-kV-QBc"/>
+                            <constraint firstItem="1N0-cp-ypx" firstAttribute="top" secondItem="3Ie-QH-xzH" secondAttribute="top" id="GwV-bf-Nr6"/>
+                            <constraint firstItem="3Ie-QH-xzH" firstAttribute="trailing" secondItem="Q8h-yc-eRg" secondAttribute="trailing" constant="16" id="Hgd-nf-zup"/>
+                            <constraint firstItem="1N0-cp-ypx" firstAttribute="leading" secondItem="3Ie-QH-xzH" secondAttribute="leading" id="Ikq-4v-qhh"/>
+                            <constraint firstItem="N95-nY-U0L" firstAttribute="top" secondItem="1N0-cp-ypx" secondAttribute="bottom" constant="16" id="N3e-Ul-s8m"/>
+                            <constraint firstItem="Q8h-yc-eRg" firstAttribute="top" secondItem="7Rf-9A-bm9" secondAttribute="bottom" constant="16" id="P1N-6S-1FN"/>
+                            <constraint firstItem="3Ie-QH-xzH" firstAttribute="trailing" secondItem="N95-nY-U0L" secondAttribute="trailing" constant="16" id="WdP-nq-GOi"/>
+                            <constraint firstItem="3Ie-QH-xzH" firstAttribute="trailing" secondItem="4TD-Ax-0aM" secondAttribute="trailing" constant="16" id="jcD-wQ-pLg"/>
+                            <constraint firstItem="Q8h-yc-eRg" firstAttribute="leading" secondItem="3Ie-QH-xzH" secondAttribute="leading" constant="16" id="oEI-cC-ww1"/>
+                            <constraint firstItem="7Rf-9A-bm9" firstAttribute="leading" secondItem="3Ie-QH-xzH" secondAttribute="leading" constant="16" id="saA-HV-B8k"/>
+                            <constraint firstItem="7Rf-9A-bm9" firstAttribute="top" secondItem="N95-nY-U0L" secondAttribute="bottom" constant="8" id="taT-L7-CKc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rhL-y1-Uki"/>
+                    <connections>
+                        <outlet property="ivBackdrop" destination="1N0-cp-ypx" id="ey1-uU-fzt"/>
+                        <outlet property="lbDate" destination="7Rf-9A-bm9" id="pOb-AW-Zyx"/>
+                        <outlet property="lbOverview" destination="4TD-Ax-0aM" id="mqJ-wC-r3u"/>
+                        <outlet property="lbTitle" destination="N95-nY-U0L" id="QJd-we-2Fu"/>
+                        <outlet property="lbVotes" destination="fau-cE-KCY" id="vit-MN-Zmd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bcZ-5M-03z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759.5419847328244" y="10.563380281690142"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 
 protocol MoviesViewControllerProtocol: AnyObject {
     func refreshCollectionView()
+    func showErrorMsg()
 }
 
 class MoviesViewController: UIViewController {
@@ -18,6 +19,7 @@ class MoviesViewController: UIViewController {
     var presenter: MoviesPresenterProtocol?
     
     @IBOutlet weak var cvMovies: UICollectionView!
+    @IBOutlet weak var lbError: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +82,11 @@ extension MoviesViewController : MoviesViewControllerProtocol {
     
     func refreshCollectionView(){
         cvMovies.reloadData()
+    }
+    
+    func showErrorMsg() {
+        lbError.isHidden = false
+        cvMovies.isHidden = true
     }
 }
 

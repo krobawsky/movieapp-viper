@@ -53,6 +53,7 @@ extension MoviesPresenter: MoviesPresenterProtocol {
             // Oculto loading
             if let error = error {
                 print( error.errorDescription ?? "error" )
+                welf.view?.showErrorMsg()
                 return
             }
             // Respuesta exitosa

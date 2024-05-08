@@ -33,6 +33,7 @@
 		A06F53042BEB3BE7007C7799 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */; };
 		A06F53062BEB3BEF007C7799 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */; };
 		A06F530A2BEB53D2007C7799 /* MovieDb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A06F53082BEB53D2007C7799 /* MovieDb.xcdatamodeld */; };
+		A0D966152BEBCF170021C955 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D966142BEBCF170021C955 /* LoginInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieDetailPresenter.swift; path = ../../../../../../MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		A06F53092BEB53D2007C7799 /* MovieDb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieDb.xcdatamodel; sourceTree = "<group>"; };
+		A0D966142BEBCF170021C955 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		ABB79ACEE42EF149C59DCAEB /* Pods-moviesapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviesapp.release.xcconfig"; path = "Target Support Files/Pods-moviesapp/Pods-moviesapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 		A06F52CE2BE9BDD1007C7799 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				A0D966142BEBCF170021C955 /* LoginInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				A06F52BB2BE9BB9A007C7799 /* ViewController.swift in Sources */,
 				A06F52E72BE9C6CB007C7799 /* MoviesRouter.swift in Sources */,
 				A06F52EC2BE9CA1D007C7799 /* MoviesResponseEntity.swift in Sources */,
+				A0D966152BEBCF170021C955 /* LoginInteractor.swift in Sources */,
 				A06F52D72BE9C2DB007C7799 /* LoginRouter.swift in Sources */,
 				A06F52FB2BEA696F007C7799 /* MovieViewCell.swift in Sources */,
 				A06F52B72BE9BB9A007C7799 /* AppDelegate.swift in Sources */,

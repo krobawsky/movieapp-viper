@@ -29,13 +29,8 @@ class MoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let conf = MoviesConfigurator()
-        conf.configurate(controller: self)
-        
         configurateCollectionView()
-        
         presenter?.fetchMovies()
-        
     }
     
     func configurateCollectionView(){
@@ -94,7 +89,6 @@ extension MoviesViewController : MoviesViewControllerProtocol {
                     print(data.value(forKey: "title") as! String)
                 }
             }
-            
         } catch {
             print("Failed")
         }
@@ -105,45 +99,36 @@ extension MoviesViewController : MoviesViewControllerProtocol {
         saveCoreData()
     }
     
+    // Guardar datos en core data
     private func saveCoreData() {
-        // Guardar datos en core data
+
         self.presenter?.getMovies().forEach { movie in
-            
-            let newMovie = Movies(context: context)
-            newMovie.id = Int32(movie.id)
-            newMovie.title = movie.title
-            newMovie.releaseDate = movie.releaseDate
-            newMovie.voteAverage = movie.votes
-            newMovie.overview = movie.overview
-            newMovie.poster = movie.poster
-            newMovie.backdrop = movie.backdrop
-        }
-        
-        do {
-          try context.save()
-         } catch {
-          print("Error saving")
-        }
-        
-        // eliminar repetidos
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Movies")
-        request.predicate = NSPredicate(format: "id = %@")
-        do {
-            let fetchResult = try context.fetch(request)
-            if fetchResult.count > 0 {
-                for data in fetchResult {
-                    context.delete(data as! NSManagedObject)
-                }
-            }
-            // save
+            // buscar movie en core data
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Movies")
+            request.predicate = NSPredicate(format: "id = %@", NSNumber(integerLiteral: movie.id))
+            request.returnsObjectsAsFaults = false
             do {
-                try context.save()
+                let fetchResult = try context.fetch(request)
+                // validar si ya existe la pelicula
+                if fetchResult.count == 0 {
+                    let newMovie = Movies(context: context)
+                    newMovie.id = Int32(movie.id)
+                    newMovie.title = movie.title
+                    newMovie.releaseDate = movie.releaseDate
+                    newMovie.voteAverage = movie.votes
+                    newMovie.overview = movie.overview
+                    newMovie.poster = movie.poster
+                    newMovie.backdrop = movie.backdrop
+                }
+            } catch {
+                print("Failed")
             }
-            catch {
-                
-            }
+        }
+        // guardar datos
+        do {
+            try context.save()
         } catch {
-            print("Failed")
+            print("Error saving")
         }
     }
     
@@ -156,7 +141,7 @@ extension MoviesViewController : MoviesViewControllerProtocol {
 
 class MoviesConfigurator {
     func configurate(controller: MoviesViewController) {
-        let router = MoviesRouter(withView: controller)
+        let router = MoviesRouter()
         let interactor = MoviesInteractor()
         let presenter = MoviesPresenter(view: controller, router: router, interactor: interactor)
         controller.presenter = presenter

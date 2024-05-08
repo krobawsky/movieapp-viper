@@ -8,15 +8,44 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginViewControllerProtocol: AnyObject {
+    func showErrorMsg()
+}
 
+class LoginViewController: UIViewController {
+    
     //viper
     var presenter: LoginPresenterProtocol?
-//    let configurator = LoginConfigurator()
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // config viper
+        let conf = LoginConfigurator()
+        conf.configurate(controller: self)
     }
+    
+    @IBAction func loginAction(_ sender: Any) {
+        presenter?.fetchLogin(username: usernameTextField.text ?? "",
+                              password: passwordTextField.text ?? "")
+    }
+    
+}
 
+extension LoginViewController: LoginViewControllerProtocol {
+    func showErrorMsg() {
+        print("Error login")
+    }
+}
+
+class LoginConfigurator {
+    func configurate(controller: LoginViewController) {
+        let router = LoginRouter(withView: controller)
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter(view: controller, router: router, interactor: interactor)
+        controller.presenter = presenter
+    }
 }

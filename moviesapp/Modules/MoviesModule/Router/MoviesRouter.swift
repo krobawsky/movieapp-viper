@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MoviesRouterProtocol : AnyObject{
+    func showMovies(fromViewController: UIViewController)
     func showMovieDetail(_ movie: MovieModel)
 }
 
@@ -16,14 +18,30 @@ class MoviesRouter {
     var movieDetailRouter: MovieDetailRouter?
     weak var currentViewController: MoviesViewController?
     
-    init(withView view: MoviesViewController) {
-        self.movieDetailRouter = MovieDetailRouter()
-        self.currentViewController = view
-    }
-    
 }
 
 extension MoviesRouter: MoviesRouterProtocol {
+    
+    func showMovies(fromViewController: UIViewController) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(
+            withIdentifier: String(describing: MoviesViewController.self)) as? MoviesViewController else {
+            fatalError("viewController failed while casting")
+        }
+        
+        self.movieDetailRouter = MovieDetailRouter()
+        self.currentViewController = viewController
+        
+        let router = self
+        let interactor = MoviesInteractor()
+        let presenter = MoviesPresenter(view: viewController, router: router, interactor: interactor)
+        viewController.presenter = presenter
+        
+        viewController.modalPresentationStyle = .fullScreen
+        fromViewController.present(viewController, animated: true)
+    }
+    
     func showMovieDetail(_ movie: MovieModel) {
         guard let vc = currentViewController else {
             return

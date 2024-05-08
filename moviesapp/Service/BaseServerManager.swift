@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class BaseServerManager: SessionDelegate{
+class BaseServerManager: SessionDelegate {
     let sessionManager: Session
     
     // constant

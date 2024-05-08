@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Reachability
+import CoreData
 
 protocol MoviesPresenterProtocol : AnyObject {
     func getMovies() -> [MovieModel]
@@ -48,6 +50,13 @@ extension MoviesPresenter: MoviesPresenterProtocol {
     }
     
     func fetchMovies(){
+        // check internet
+        let reachability = try! Reachability()
+        if reachability.connection == .unavailable {
+            print("Internet connection is off.")
+            self.view?.showCoreData()
+        }
+        
         interactor.getUpcomingMovies(completion: { [weak self] (moviesEntity, error) in
             guard let welf = self else{ return }
             // Oculto loading

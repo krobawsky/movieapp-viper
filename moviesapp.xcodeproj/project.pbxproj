@@ -32,6 +32,7 @@
 		A06F53022BEB3BDD007C7799 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53012BEB3BDD007C7799 /* MovieDetailRouter.swift */; };
 		A06F53042BEB3BE7007C7799 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */; };
 		A06F53062BEB3BEF007C7799 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */; };
+		A06F530A2BEB53D2007C7799 /* MovieDb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A06F53082BEB53D2007C7799 /* MovieDb.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		A06F53012BEB3BDD007C7799 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
 		A06F53032BEB3BE7007C7799 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieDetailPresenter.swift; path = ../../../../../../MovieDetailPresenter.swift; sourceTree = "<group>"; };
 		A06F53052BEB3BEF007C7799 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		A06F53092BEB53D2007C7799 /* MovieDb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieDb.xcdatamodel; sourceTree = "<group>"; };
 		ABB79ACEE42EF149C59DCAEB /* Pods-moviesapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviesapp.release.xcconfig"; path = "Target Support Files/Pods-moviesapp/Pods-moviesapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +109,8 @@
 		A06F52B52BE9BB9A007C7799 /* moviesapp */ = {
 			isa = PBXGroup;
 			children = (
-				A06F52F22BE9CC51007C7799 /* Helpers */,
+				A06F530D2BEB56A4007C7799 /* Storage */,
+				A06F52F22BE9CC51007C7799 /* Service */,
 				A06F52ED2BE9CBA9007C7799 /* MovieDB */,
 				A06F52CA2BE9BDA5007C7799 /* Modules */,
 				A06F52B62BE9BB9A007C7799 /* AppDelegate.swift */,
@@ -238,12 +241,12 @@
 			path = MovieDB;
 			sourceTree = "<group>";
 		};
-		A06F52F22BE9CC51007C7799 /* Helpers */ = {
+		A06F52F22BE9CC51007C7799 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				A06F52EE2BE9CBCF007C7799 /* BaseServerManager.swift */,
 			);
-			path = Helpers;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		A06F52FD2BEB3B9D007C7799 /* MovieDetailModule */ = {
@@ -278,6 +281,14 @@
 				A06F53012BEB3BDD007C7799 /* MovieDetailRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		A06F530D2BEB56A4007C7799 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A06F53082BEB53D2007C7799 /* MovieDb.xcdatamodeld */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		C8E23570690411CB83A5C8B2 /* Pods */ = {
@@ -413,6 +424,7 @@
 				A06F52EF2BE9CBCF007C7799 /* BaseServerManager.swift in Sources */,
 				A06F53042BEB3BE7007C7799 /* MovieDetailPresenter.swift in Sources */,
 				A06F52E52BE9C6C3007C7799 /* MoviesInteractor.swift in Sources */,
+				A06F530A2BEB53D2007C7799 /* MovieDb.xcdatamodeld in Sources */,
 				A06F52BB2BE9BB9A007C7799 /* ViewController.swift in Sources */,
 				A06F52E72BE9C6CB007C7799 /* MoviesRouter.swift in Sources */,
 				A06F52EC2BE9CA1D007C7799 /* MoviesResponseEntity.swift in Sources */,
@@ -649,6 +661,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A06F53082BEB53D2007C7799 /* MovieDb.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A06F53092BEB53D2007C7799 /* MovieDb.xcdatamodel */,
+			);
+			currentVersion = A06F53092BEB53D2007C7799 /* MovieDb.xcdatamodel */;
+			path = MovieDb.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A06F52AB2BE9BB9A007C7799 /* Project object */;
 }

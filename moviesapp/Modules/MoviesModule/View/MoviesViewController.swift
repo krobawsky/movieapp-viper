@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol MoviesViewControllerProtocol: AnyObject {
     func refreshCollectionView()
     func showErrorMsg()
+    func showCoreData()
 }
 
 class MoviesViewController: UIViewController {
@@ -18,6 +20,9 @@ class MoviesViewController: UIViewController {
     //viper
     var presenter: MoviesPresenterProtocol?
     
+    //coredata
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     @IBOutlet weak var cvMovies: UICollectionView!
     @IBOutlet weak var lbError: UILabel!
     
@@ -80,14 +85,73 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 
 extension MoviesViewController : MoviesViewControllerProtocol {
     
+    func showCoreData() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Movies")
+        do {
+            let fetchResult = try context.fetch(request)
+            if fetchResult.count > 0 {
+                for data in fetchResult as! [NSManagedObject] {
+                    print(data.value(forKey: "title") as! String)
+                }
+            }
+            
+        } catch {
+            print("Failed")
+        }
+    }
+    
     func refreshCollectionView(){
         cvMovies.reloadData()
+        saveCoreData()
+    }
+    
+    private func saveCoreData() {
+        // Guardar datos en core data
+        self.presenter?.getMovies().forEach { movie in
+            
+            let newMovie = Movies(context: context)
+            newMovie.id = Int32(movie.id)
+            newMovie.title = movie.title
+            newMovie.releaseDate = movie.releaseDate
+            newMovie.voteAverage = movie.votes
+            newMovie.overview = movie.overview
+            newMovie.poster = movie.poster
+            newMovie.backdrop = movie.backdrop
+        }
+        
+        do {
+          try context.save()
+         } catch {
+          print("Error saving")
+        }
+        
+        // eliminar repetidos
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Movies")
+        request.predicate = NSPredicate(format: "id = %@")
+        do {
+            let fetchResult = try context.fetch(request)
+            if fetchResult.count > 0 {
+                for data in fetchResult {
+                    context.delete(data as! NSManagedObject)
+                }
+            }
+            // save
+            do {
+                try context.save()
+            }
+            catch {
+                
+            }
+        } catch {
+            print("Failed")
+        }
     }
     
     func showErrorMsg() {
         lbError.isHidden = false
         cvMovies.isHidden = true
     }
+    
 }
 
 class MoviesConfigurator {

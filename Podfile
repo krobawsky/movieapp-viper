@@ -8,4 +8,5 @@ target 'moviesapp' do
   # Pods for moviesapp
   pod 'Alamofire', '~> 5.9'
   pod 'AlamofireImage', '~> 4.3'
+  pod 'ReachabilitySwift'
 end

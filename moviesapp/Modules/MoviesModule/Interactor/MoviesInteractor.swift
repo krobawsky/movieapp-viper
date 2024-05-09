@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol MoviesInteractorProtocol : AnyObject {
-    func getUpcomingMovies( completion: @escaping ([MovieEntity], AFError?)->())
+    func getUpcomingMovies(page: Int, completion: @escaping (MoviesResponseEntity?, AFError?)->())
 }
 
 class MoviesInteractor {
@@ -17,20 +17,23 @@ class MoviesInteractor {
 }
 
 extension MoviesInteractor: MoviesInteractorProtocol{
-    func getUpcomingMovies(completion: @escaping ([MovieEntity], Alamofire.AFError?) -> ()) {
+    func getUpcomingMovies(page: Int, completion: @escaping (MoviesResponseEntity?, Alamofire.AFError?) -> ()) {
         
         let url = "\(Endpoint.baseMovieDb)/movie/upcoming"
+        let parameters: Parameters = [
+            "page": String(page)
+        ]
         
         api.sessionManager
-            .request(url, method: .get)
+            .request(url, method: .get, parameters: parameters)
             .validate()
             .responseDecodable { (response: AFDataResponse<MoviesResponseEntity>) in
                 print(response)
                 switch response.result{
                 case .success(let value):
-                    completion(value.results, nil)
+                    completion(value, nil)
                 case .failure(let error):
-                    completion([], error)
+                    completion(nil, error)
                 }
             }
     }

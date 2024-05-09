@@ -13,8 +13,8 @@ struct MovieEntity: Codable {
     let voteAverage: Double
     let releaseDate: String
     let overview: String
-    let poster: String
-    let backdrop: String
+    let poster: String?
+    let backdrop: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -36,8 +36,8 @@ extension MovieEntity {
             votes: voteAverage,
             releaseDate: releaseDate,
             overview: overview,
-            poster: poster,
-            backdrop: backdrop
+            poster: poster ?? "",
+            backdrop: backdrop ?? ""
         )
     }
 }

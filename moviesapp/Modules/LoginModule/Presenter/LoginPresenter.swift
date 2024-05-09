@@ -31,7 +31,9 @@ class LoginPresenter {
 extension LoginPresenter: LoginPresenterProtocol {
     
     func fetchLogin(username: String, password: String) {
-        interactor.login(username: username, password: password, completion: { [weak self] (success) in
+        interactor.login(username: username.lowercased(),
+                         password: password.lowercased(),
+                         completion: { [weak self] (success) in
             guard let welf = self else{ return }
             if(success) {
                 welf.router.goToMovies()

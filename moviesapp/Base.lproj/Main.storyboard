@@ -80,8 +80,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XAk-Pw-hIL">
-                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XAk-Pw-hIL">
+                                <rect key="frame" x="0.0" y="59" width="393" height="773"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hubo un error en el servicio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDd-s9-CL1">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
@@ -89,8 +89,8 @@
                                         <color key="textColor" red="0.89019607840000003" green="0.015686274510000001" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ysz-7h-RPy">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                                    <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ysz-7h-RPy">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="OlE-Kk-FRT">
                                             <size key="itemSize" width="64" height="180"/>
@@ -100,6 +100,10 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                     </collectionView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0Fv-dv-TG4">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="773"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -109,12 +113,13 @@
                             <constraint firstItem="XAk-Pw-hIL" firstAttribute="top" secondItem="epS-Qw-wkY" secondAttribute="top" id="2jF-6m-WYj"/>
                             <constraint firstAttribute="trailing" secondItem="XAk-Pw-hIL" secondAttribute="trailing" id="75c-vT-b8W"/>
                             <constraint firstItem="XAk-Pw-hIL" firstAttribute="leading" secondItem="epS-Qw-wkY" secondAttribute="leading" id="GPI-2u-y5K"/>
-                            <constraint firstAttribute="bottom" secondItem="XAk-Pw-hIL" secondAttribute="bottom" id="Mog-U9-ihw"/>
+                            <constraint firstAttribute="bottom" secondItem="XAk-Pw-hIL" secondAttribute="bottom" constant="20" id="Mog-U9-ihw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cvMovies" destination="ysz-7h-RPy" id="ur3-Q0-cro"/>
                         <outlet property="lbError" destination="WDd-s9-CL1" id="Pg3-z3-CjD"/>
+                        <outlet property="loadingIndicator" destination="0Fv-dv-TG4" id="NGr-Sn-QtA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCk-f4-sfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

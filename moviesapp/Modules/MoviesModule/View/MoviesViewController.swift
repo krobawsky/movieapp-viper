@@ -11,6 +11,8 @@ import CoreData
 
 protocol MoviesViewControllerProtocol: AnyObject {
     func refreshCollectionView()
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
     func showErrorMsg()
     func showCoreData()
 }
@@ -18,19 +20,20 @@ protocol MoviesViewControllerProtocol: AnyObject {
 class MoviesViewController: UIViewController {
     
     //viper
-    var presenter: MoviesPresenterProtocol?
+    var presenter: MoviesPresenterProtocol!
     
     //coredata
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     @IBOutlet weak var cvMovies: UICollectionView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var lbError: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configurateCollectionView()
-        presenter?.fetchMovies()
+        presenter.fetchMovies()
     }
     
     func configurateCollectionView(){
@@ -43,7 +46,7 @@ class MoviesViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension MoviesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.getMovies().count ?? 0
+        return presenter.getMovies().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,13 +56,22 @@ extension MoviesViewController: UICollectionViewDataSource {
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if presenter.isLastPage() && indexPath.row == presenter.getMovies().count - 1 {
+            // prepare next page
+            presenter.nextPage()
+            // get more movies
+            presenter.fetchMovies()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 extension MoviesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter?.showMovieDetail(at: indexPath.row)
+        presenter.showMovieDetail(at: indexPath.row)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,8 +106,17 @@ extension MoviesViewController : MoviesViewControllerProtocol {
         }
     }
     
+    func showLoadingIndicator() {
+        loadingIndicator.isHidden = false
+    }
+    
+    func hideLoadingIndicator() {
+        loadingIndicator.isHidden = true
+    }
+    
     func refreshCollectionView(){
         cvMovies.reloadData()
+        cvMovies.isHidden = false
         saveCoreData()
     }
     

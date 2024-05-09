@@ -19,7 +19,7 @@ extension LoginInteractor: LoginInteractorProtocol{
     
     func login(username: String, password: String, completion: @escaping (Bool)->()) {
         // validate login
-        if(username == "admin" && password == "awdr"){
+        if(username == "admin" && password == "password*123"){
             completion(true)
         } else {
             completion(false)
